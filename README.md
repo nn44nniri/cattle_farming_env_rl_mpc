@@ -9,7 +9,7 @@ The package is inspired by two references already attached in the workspace:
 This implementation is part of the climate controller in my thesis trans-domain digital twin, which is written in the resources section. This implementation is customized for industrial cattle farming.
 
 Trans-domain digital twin optimization view:
-![Trans-domain digital twin optimization view:](images/Industrial_cattle_farming_diagram.pdf)
+![Trans-domain digital twin optimization view:](images/Industrial_cattle_farming_diagram.drawio.svg)
 
 
 ## Abstract
