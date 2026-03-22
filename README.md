@@ -70,6 +70,7 @@ Figure 2 is one of the conceptual foundations of this package. It explains that 
 - **UCT (Upper Critical Temperature)**: above this, the cow experiences heat stress and must increase heat dissipation.
 
 Cattle thermal comfort:
+
 <img src="images/Graph_of_the_effects_of_cow_comfort_parameters.png" width="70%" />
 
 The figure does **not** describe body temperature directly. It describes how the cow reacts to **ambient environmental temperature** under changing surrounding conditions. In other words, the same indoor air temperature can be comfortable on one day and stressful on another depending on humidity, wind, solar radiation, precipitation, cloud cover, body weight, and heat production.
