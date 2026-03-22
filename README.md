@@ -8,7 +8,7 @@ The package is inspired by two references already attached in the workspace:
 - the LiGAPS-Beef thermoregulation / TNZ paper together with `thermoregulation_sensitivity.cpp`, used here to define breed-aware thermal comfort bands through `LCT`, `UCT`, `<TNZ`, and `>TNZ`
 This implementation is part of the climate controller in my thesis trans-domain digital twin, which is written in the resources section. This implementation is customized for industrial cattle farming.
 Trans-domain digital twin optimization view:
-![Alt text for the image](image_source_url_or_path)
+![Trans-domain digital twin optimization view:](images/Industrial_cattle_farming_diagram.drawio.svg)
 
 
 ## Abstract
@@ -67,6 +67,9 @@ Figure 2 is one of the conceptual foundations of this package. It explains that 
 
 - **LCT (Lower Critical Temperature)**: below this, the cow experiences cold stress and must increase heat conservation or metabolic heat production.
 - **UCT (Upper Critical Temperature)**: above this, the cow experiences heat stress and must increase heat dissipation.
+
+Cattle thermal comfort:
+![Cattle thermal comfort:](images/Graph_of_the_effects_of_cow_comfort_parameters.png)
 
 The figure does **not** describe body temperature directly. It describes how the cow reacts to **ambient environmental temperature** under changing surrounding conditions. In other words, the same indoor air temperature can be comfortable on one day and stressful on another depending on humidity, wind, solar radiation, precipitation, cloud cover, body weight, and heat production.
 
@@ -177,14 +180,16 @@ The most important scientific result embodied in the software is the operational
 
 This repository is based conceptually on the following core sources already referenced throughout the package and conversation history:
 
-1. **LiGAPS-Beef, a mechanistic model to explore potential and feed-limited beef production 2: sensitivity analysis and evaluation of sub-models.** This is the thermoregulation reference used for the TNZ interpretation, the role of `LCT` and `UCT`, and the importance of climatic and animal modifiers of thermal comfort.
-2. **Reinforcement learning-based model predictive control for greenhouse climate control.** This is the architectural inspiration for the lightweight MPC-guided RL decision pattern adapted here from greenhouse climate control to cattle-shed climate control.
+1. **A. van der Linden et al. ,(2018), LiGAPS-Beef, a mechanistic model to explore potential and feed-limited beef production 2: sensitivity analysis and evaluation of sub-models.https://doi.org/10.1017/S1751731118001738** This is the thermoregulation reference used for the TNZ interpretation, the role of `LCT` and `UCT`, and the importance of climatic and animal modifiers of thermal comfort.
+2. **S. Mallick et al. , (2025), Reinforcement learning-based model predictive control for greenhouse climate control. https://doi.org/10.1016/j.atech.2024.100751** This is the architectural inspiration for the lightweight MPC-guided RL decision pattern adapted here from greenhouse climate control to cattle-shed climate control.
 3. The local source implementation files in this repository, especially:
    - `thermal_comfort.*`
    - `rl_mpc.*`
    - `transformation.*`
    - `event_store.*`
    - `weather_dataset.*`
+
+4. **Mansoorali Amiri, (2025), Towards intelligent digital twins in agriculture in controlled environments: joint contributions in fruit detection by vision and Trans-domain simulation. https://doi.org/10.71781/310**
 
 These references are complemented by the repository’s own practical implementation choices, which prioritize deployability, configurability, and reproducible operational workflows.
 
@@ -209,6 +214,12 @@ The controller tries to keep the cattle-barn indoor climate close to the cow com
 - thermal stress below `LCT` or above `UCT`
 - negative body-weight change under thermal discomfort
 - excessive actuator use and abrupt actuator changes
+
+Based on the explanation given and the output graph of one day below, the comfort range of cows is not linear with respect to their genotype and breed and varies with respect to other vital parameters such as humidity, wind, light and weight. This agent in our reinforcement learning has been trained by looking at the past 10 years of climate records to maintain the temperature in the optimal range using the actuators of the hall environment with minimal energy consumption:
+
+![Maintain the temperature in the optimal range](output/validation_rollout.svg)
+
+
 
 ## Important design note
 
