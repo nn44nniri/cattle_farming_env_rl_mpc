@@ -219,6 +219,7 @@ The controller tries to keep the cattle-barn indoor climate close to the cow com
 Based on the explanation given and the output graph of one day below, the comfort range of cows is not linear with respect to their genotype and breed and varies with respect to other vital parameters such as humidity, wind, light and weight. This agent in our reinforcement learning has been trained by looking at the past 10 years of climate records to maintain the temperature in the optimal range using the actuators of the hall environment with minimal energy consumption:
 
 ![Maintain the temperature in the optimal range](output/validation_rollout.svg)
+<img src="output/validation_rollout.svg" width="100" />
 
 
 
