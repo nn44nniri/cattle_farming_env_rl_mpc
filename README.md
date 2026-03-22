@@ -71,6 +71,7 @@ Figure 2 is one of the conceptual foundations of this package. It explains that 
 
 Cattle thermal comfort:
 ![Cattle thermal comfort:](images/Graph_of_the_effects_of_cow_comfort_parameters.png)
+<img src="images/Graph_of_the_effects_of_cow_comfort_parameters.png" width="50%" />
 
 The figure does **not** describe body temperature directly. It describes how the cow reacts to **ambient environmental temperature** under changing surrounding conditions. In other words, the same indoor air temperature can be comfortable on one day and stressful on another depending on humidity, wind, solar radiation, precipitation, cloud cover, body weight, and heat production.
 
@@ -219,7 +220,7 @@ The controller tries to keep the cattle-barn indoor climate close to the cow com
 Based on the explanation given and the output graph of one day below, the comfort range of cows is not linear with respect to their genotype and breed and varies with respect to other vital parameters such as humidity, wind, light and weight. This agent in our reinforcement learning has been trained by looking at the past 10 years of climate records to maintain the temperature in the optimal range using the actuators of the hall environment with minimal energy consumption:
 
 ![Maintain the temperature in the optimal range](output/validation_rollout.svg)
-<img src="output/validation_rollout.svg" width="100" />
+
 
 
 
