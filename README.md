@@ -183,15 +183,10 @@ The most important scientific result embodied in the software is the operational
 This repository is based conceptually on the following core sources already referenced throughout the package and conversation history:
 
 1. **A. van der Linden et al. ,(2018), LiGAPS-Beef, a mechanistic model to explore potential and feed-limited beef production 2: sensitivity analysis and evaluation of sub-models.https://doi.org/10.1017/S1751731118001738** This is the thermoregulation reference used for the TNZ interpretation, the role of `LCT` and `UCT`, and the importance of climatic and animal modifiers of thermal comfort.
-2. **S. Mallick et al. , (2025), Reinforcement learning-based model predictive control for greenhouse climate control. https://doi.org/10.1016/j.atech.2024.100751** This is the architectural inspiration for the lightweight MPC-guided RL decision pattern adapted here from greenhouse climate control to cattle-shed climate control.
-3. The local source implementation files in this repository, especially:
-   - `thermal_comfort.*`
-   - `rl_mpc.*`
-   - `transformation.*`
-   - `event_store.*`
-   - `weather_dataset.*`
 
-4. **Mansoorali Amiri, (2025), Towards intelligent digital twins in agriculture in controlled environments: joint contributions in fruit detection by vision and Trans-domain simulation. https://doi.org/10.71781/310**
+2. **S. Mallick et al. , (2025), Reinforcement learning-based model predictive control for greenhouse climate control. https://doi.org/10.1016/j.atech.2024.100751** This is the architectural inspiration for the lightweight MPC-guided RL decision pattern adapted here from greenhouse climate control to cattle-shed climate control.
+
+3. **Mansoorali Amiri, (2025), Towards intelligent digital twins in agriculture in controlled environments: joint contributions in fruit detection by vision and Trans-domain simulation. https://doi.org/10.71781/310**
 
 These references are complemented by the repository’s own practical implementation choices, which prioritize deployability, configurability, and reproducible operational workflows.
 
