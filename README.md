@@ -7,6 +7,7 @@ The package is inspired by two references already attached in the workspace:
 - the greenhouse RL-based MPC control paper, used as the controller architecture inspiration
 - the LiGAPS-Beef thermoregulation / TNZ paper together with `thermoregulation_sensitivity.cpp`, used here to define breed-aware thermal comfort bands through `LCT`, `UCT`, `<TNZ`, and `>TNZ`
 This implementation is part of the climate controller in my thesis trans-domain digital twin, which is written in the resources section. This implementation is customized for industrial cattle farming.
+
 Trans-domain digital twin optimization view:
 ![Trans-domain digital twin optimization view:](images/Industrial_cattle_farming_diagram.drawio.svg)
 
