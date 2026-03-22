@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "effective_datetime": "2023-01-01 00:00:00",
+      "outdoor_temp_c": 4.0,
+      "relative_humidity": 0.58,
+      "wind_speed_m_s": 1.7,
+      "direct_radiation_w_m2": 0.0,
+      "diffuse_radiation_w_m2": 0.0,
+      "precipitation_mm": 0.0,
+      "cloud_cover_fraction": 0.50
+    },
+    {
+      "effective_datetime": "2023-01-01 01:00:00",
+      "outdoor_temp_c": 3.5,
+      "relative_humidity": 0.60,
+      "wind_speed_m_s": 1.5,
+      "direct_radiation_w_m2": 0.0,
+      "diffuse_radiation_w_m2": 0.0,
+      "precipitation_mm": 0.0,
+      "cloud_cover_fraction": 0.55
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+cmake_minimum_required(VERSION 3.16)
+project(cattle_farming_env_rl_mpc VERSION 0.4.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+include(CTest)
+enable_testing()
+
+find_package(SQLite3 REQUIRED)
+
+add_library(cattle_climate
+    src/formulas.cpp
+    src/settings.cpp
+    src/simulator.cpp
+    src/env.cpp
+    src/weather_dataset.cpp
+    src/thermal_comfort.cpp
+    src/rl_mpc.cpp
+    src/transformation.cpp
+    src/event_store.cpp
+)
+
+target_include_directories(cattle_climate
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_link_libraries(cattle_climate PUBLIC SQLite::SQLite3)
+
+add_executable(cattle_climate_example src/main.cpp)
+target_link_libraries(cattle_climate_example PRIVATE cattle_climate)
+
+add_executable(cattle_climate_random_env_test tests/random_env_test.cpp)
+target_link_libraries(cattle_climate_random_env_test PRIVATE cattle_climate)
+
+add_executable(cattle_farming_env_rl_mpc src/rl_mpc_main.cpp)
+target_link_libraries(cattle_farming_env_rl_mpc PRIVATE cattle_climate)
+
+add_test(
+    NAME cattle_climate_random_env_test
+    COMMAND cattle_climate_random_env_test ${CMAKE_CURRENT_SOURCE_DIR}/config/test_settings.json
+)
+
+add_executable(cattle_climate_transformation_test tests/transformation_test.cpp)
+target_link_libraries(cattle_climate_transformation_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_transformation_test COMMAND cattle_climate_transformation_test ${CMAKE_CURRENT_SOURCE_DIR}/config/grpc_weight_feed_snapshot.json ${CMAKE_CURRENT_SOURCE_DIR}/config/sensors_interface_snapshot.json)
+
+add_executable(cattle_climate_ligaps_beef_offline_test tests/ligaps_beef_offline_test.cpp)
+target_link_libraries(cattle_climate_ligaps_beef_offline_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_ligaps_beef_offline_test COMMAND cattle_climate_ligaps_beef_offline_test ${CMAKE_CURRENT_SOURCE_DIR}/config/ligaps_beef_request.json ${CMAKE_CURRENT_SOURCE_DIR}/config/grpc_weight_feed_snapshot.json)
+
+add_executable(cattle_climate_sensors_interface_offline_test tests/sensors_interface_offline_test.cpp)
+target_link_libraries(cattle_climate_sensors_interface_offline_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_sensors_interface_offline_test COMMAND cattle_climate_sensors_interface_offline_test ${CMAKE_CURRENT_SOURCE_DIR}/config/sensors_interface_request.json ${CMAKE_CURRENT_SOURCE_DIR}/config/sensors_interface_snapshot.json)
+
+add_executable(cattle_climate_actuators_interface_offline_test tests/actuators_interface_offline_test.cpp)
+target_link_libraries(cattle_climate_actuators_interface_offline_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_actuators_interface_offline_test COMMAND cattle_climate_actuators_interface_offline_test ${CMAKE_CURRENT_SOURCE_DIR}/config/actuators_interface_request.json)
+
+add_executable(cattle_climate_proto_contract_offline_test tests/proto_contract_offline_test.cpp)
+add_test(NAME cattle_climate_proto_contract_offline_test COMMAND cattle_climate_proto_contract_offline_test ${CMAKE_CURRENT_SOURCE_DIR}/proto/cattle_farming_transformation.proto)
+
+add_executable(cattle_climate_breed_registry_settings_test tests/breed_registry_settings_test.cpp)
+target_link_libraries(cattle_climate_breed_registry_settings_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_breed_registry_settings_test COMMAND cattle_climate_breed_registry_settings_test ${CMAKE_CURRENT_SOURCE_DIR}/config/settings.json)
+
+add_executable(cattle_climate_estimator_interface_offline_test tests/estimator_interface_offline_test.cpp)
+target_link_libraries(cattle_climate_estimator_interface_offline_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_estimator_interface_offline_test COMMAND cattle_climate_estimator_interface_offline_test ${CMAKE_CURRENT_SOURCE_DIR}/config/estimator_interface_request.json)
+
+add_executable(cattle_climate_event_store_aggregate_test tests/event_store_aggregate_test.cpp)
+target_link_libraries(cattle_climate_event_store_aggregate_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_event_store_aggregate_test COMMAND cattle_climate_event_store_aggregate_test)
+
+
+add_executable(cattle_climate_ligaps_optimizer_interface_offline_test tests/ligaps_optimizer_interface_offline_test.cpp)
+target_link_libraries(cattle_climate_ligaps_optimizer_interface_offline_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_ligaps_optimizer_interface_offline_test COMMAND cattle_climate_ligaps_optimizer_interface_offline_test ${CMAKE_SOURCE_DIR}/config/ligaps_beef_optimizer_request.json)
+
+add_executable(cattle_climate_day_night_climate_aggregate_test tests/day_night_climate_aggregate_test.cpp)
+target_link_libraries(cattle_climate_day_night_climate_aggregate_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_day_night_climate_aggregate_test COMMAND cattle_climate_day_night_climate_aggregate_test)
+
+add_executable(cattle_climate_runtime_service_smoke_test tests/runtime_service_smoke_test.cpp)
+target_link_libraries(cattle_climate_runtime_service_smoke_test PRIVATE cattle_climate)
+add_test(NAME cattle_climate_runtime_service_smoke_test COMMAND cattle_climate_runtime_service_smoke_test ${CMAKE_CURRENT_SOURCE_DIR}/config/smoke_grpc_settings.json)

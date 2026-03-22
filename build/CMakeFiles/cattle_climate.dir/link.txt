@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcattle_climate.a CMakeFiles/cattle_climate.dir/src/formulas.cpp.o CMakeFiles/cattle_climate.dir/src/settings.cpp.o CMakeFiles/cattle_climate.dir/src/simulator.cpp.o CMakeFiles/cattle_climate.dir/src/env.cpp.o CMakeFiles/cattle_climate.dir/src/weather_dataset.cpp.o CMakeFiles/cattle_climate.dir/src/thermal_comfort.cpp.o CMakeFiles/cattle_climate.dir/src/rl_mpc.cpp.o CMakeFiles/cattle_climate.dir/src/transformation.cpp.o CMakeFiles/cattle_climate.dir/src/event_store.cpp.o
+/usr/bin/ranlib libcattle_climate.a

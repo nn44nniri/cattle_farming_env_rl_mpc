@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package cattle.farming.transformation.v1;
+
+message CowWeight {
+  string cow_id = 1;
+  string breed = 2;
+  double body_weight_kg = 3;
+  double gain_when_comfortable_kg_per_day = 4;
+  double loss_when_stressed_kg_per_day = 5;
+}
+
+message HerdWeightsByDateRequest {
+  string node_name = 1;
+  string current_datetime = 2;
+}
+
+message HerdWeightsByDateResponse {
+  string effective_datetime = 1;
+  repeated CowWeight cows = 2;
+}
+
+message SensorFrameRequest {
+  string node_name = 1;
+  string current_datetime = 2;
+}
+
+message SensorFrameResponse {
+  string effective_datetime = 1;
+  double outdoor_temp_c = 2;
+  double relative_humidity = 3;
+  double wind_speed_m_s = 4;
+  double direct_radiation_w_m2 = 5;
+  double diffuse_radiation_w_m2 = 6;
+  double precipitation_mm = 7;
+  double cloud_cover_fraction = 8;
+}
+
+message ActuatorDispatchRequest {
+  string node_name = 1;
+  string current_datetime = 2;
+  double damper_percent = 3;
+  double fan_percent = 4;
+  double heater_percent = 5;
+  double predicted_reward = 6;
+  double mean_body_weight_kg = 7;
+  double herd_size = 8;
+  double lct_c = 9;
+  double uct_c = 10;
+}
+
+message EnergyAggregateRequest {
+  string node_name = 1;
+  string start_datetime = 2;
+  string end_datetime = 3;
+  int32 interval_minutes = 4;
+  string mode_filter = 5;
+}
+
+message EnergyAggregateRow {
+  string interval_start = 1;
+  string interval_end = 2;
+  int32 decision_count = 3;
+  double damper_energy_kwh = 4;
+  double fan_energy_kwh = 5;
+  double heater_energy_kwh = 6;
+  double total_energy_kwh = 7;
+  double mean_body_weight_kg = 8;
+  double mean_indoor_temp_c = 9;
+}
+
+message EnergyAggregateResponse {
+  string generated_at = 1;
+  string source_sqlite_path = 2;
+  repeated EnergyAggregateRow rows = 3;
+}
+
+
+message IndoorClimateByDateRequest {
+  string node_name = 1;
+  string query_date = 2;
+  string mode_filter = 3;
+}
+
+message DayNightClimateSummary {
+  string period_label = 1;
+  int32 sample_count = 2;
+  double mean_indoor_temp_c = 3;
+  double mean_indoor_relative_humidity = 4;
+  double mean_indoor_airflow_m3_s = 5;
+  double mean_internal_heat_generated_w = 6;
+}
+
+message IndoorClimateByDateResponse {
+  string generated_at = 1;
+  string query_date = 2;
+  string source_sqlite_path = 3;
+  repeated DayNightClimateSummary periods = 4;
+}
+
+message Ack {
+  bool ok = 1;
+  string message = 2;
+}
+
+service LiGAPSBeefWeightService {
+  rpc GetLatestWeightsByDate(HerdWeightsByDateRequest) returns (HerdWeightsByDateResponse);
+}
+
+service SensorsInterfaceService {
+  rpc GetLatestSensorFrame(SensorFrameRequest) returns (SensorFrameResponse);
+}
+
+service ActuatorsInterfaceService {
+  rpc PushActuatorDispatch(ActuatorDispatchRequest) returns (Ack);
+}
+
+service EstimatorInterfaceService {
+  rpc PushEnergyAggregateReport(EnergyAggregateRequest) returns (EnergyAggregateResponse);
+}
+
+service LiGAPSBeefOptimizerService {
+  rpc GetIndoorClimateByDate(IndoorClimateByDateRequest) returns (IndoorClimateByDateResponse);
+}

@@ -1,0 +1,49 @@
+{
+  "records": [
+    {
+      "effective_datetime": "2023-01-01 00:00:00",
+      "cows": [
+        {
+          "cow_id": "charolais_real_001",
+          "breed": "charolais",
+          "body_weight_kg": 452.5,
+          "gain_when_comfortable_kg_per_day": 0.10,
+          "loss_when_stressed_kg_per_day": 0.08
+        },
+        {
+          "cow_id": "boran_real_014",
+          "breed": "boran",
+          "body_weight_kg": 386.0,
+          "gain_when_comfortable_kg_per_day": 0.09,
+          "loss_when_stressed_kg_per_day": 0.07
+        }
+      ]
+    },
+    {
+      "effective_datetime": "2023-01-02 00:00:00",
+      "cows": [
+        {
+          "cow_id": "charolais_real_001",
+          "breed": "charolais",
+          "body_weight_kg": 452.8,
+          "gain_when_comfortable_kg_per_day": 0.10,
+          "loss_when_stressed_kg_per_day": 0.08
+        },
+        {
+          "cow_id": "boran_real_014",
+          "breed": "boran",
+          "body_weight_kg": 386.2,
+          "gain_when_comfortable_kg_per_day": 0.09,
+          "loss_when_stressed_kg_per_day": 0.07
+        },
+        {
+          "cow_id": "brahman_real_021",
+          "breed": "brahman_shorthorn",
+          "body_weight_kg": 421.3,
+          "gain_when_comfortable_kg_per_day": 0.095,
+          "loss_when_stressed_kg_per_day": 0.075
+        }
+      ]
+    }
+  ]
+}

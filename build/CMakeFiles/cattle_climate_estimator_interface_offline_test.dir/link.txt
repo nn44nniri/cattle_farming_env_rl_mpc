@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/cattle_climate_estimator_interface_offline_test.dir/link.d CMakeFiles/cattle_climate_estimator_interface_offline_test.dir/tests/estimator_interface_offline_test.cpp.o -o cattle_climate_estimator_interface_offline_test  libcattle_climate.a /usr/lib/x86_64-linux-gnu/libsqlite3.so

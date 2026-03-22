@@ -1,0 +1,252 @@
+{
+  "room": {
+    "length_m": 20.0,
+    "width_m": 12.0,
+    "height_m": 4.0,
+    "wall_u_value_w_m2k": 0.6,
+    "roof_u_value_w_m2k": 0.6,
+    "floor_u_value_w_m2k": 0.3,
+    "window_u_value_w_m2k": 2.4,
+    "window_count": 6,
+    "window_area_each_m2": 1.2,
+    "opening_count": 2,
+    "opening_height_m": 0.5,
+    "opening_width_m": 0.5,
+    "leakage_area_m2": 0.02
+  },
+  "climate": {
+    "outside_temp_c": -10.0,
+    "outside_relative_humidity": 0.8,
+    "outside_co2_ppm": 420.0,
+    "atmospheric_pressure_pa": 101325.0,
+    "reference_wind_speed_m_s": 4.0,
+    "outside_wind_direction_deg": 270.0,
+    "reference_height_m": 10.0,
+    "a0_coeff": 1.0,
+    "a_exp": 0.15,
+    "facade_pressure_coefficient": 0.6,
+    "direct_radiation_w_m2": 150.0,
+    "diffuse_radiation_w_m2": 50.0,
+    "ground_reflectance": 0.2,
+    "latitude_deg": 36.19,
+    "longitude_deg": 50.06,
+    "standard_meridian_deg": 52.5,
+    "day_of_year": 80,
+    "clock_time_hours": 12.0,
+    "wall_azimuth_deg": 180.0,
+    "wall_tilt_deg": 90.0,
+    "window_transmitted_solar_coefficient": 0.35,
+    "glazing_solar_coefficient": 0.5,
+    "shading_coefficient": 0.95,
+    "sky_emissivity": 0.9
+  },
+  "internal_loads": {
+    "base_sensible_gains_w": 4000.0,
+    "base_moisture_generation_kg_s": 6e-05,
+    "base_co2_generation_kg_s": 0.0
+  },
+  "actuator_settings": {
+    "fan_max_flow_m3_s": 0.25,
+    "damper_discharge_coefficient": 0.62,
+    "heater_max_power_w": 35000.0,
+    "heater_cop": 1.0,
+    "damper_max_electrical_power_w": 50.0,
+    "fan_max_electrical_power_w": 750.0,
+    "heater_max_electrical_power_w": 35000.0,
+    "damper_max_resource_rate_per_hour": 0.05,
+    "fan_max_resource_rate_per_hour": 0.75,
+    "heater_max_resource_rate_per_hour": 35.0,
+    "damper_resource_unit": "kWh",
+    "fan_resource_unit": "kWh",
+    "heater_resource_unit": "kWh"
+  },
+  "simulation": {
+    "initial_indoor_temp_c": 15.0,
+    "initial_indoor_relative_humidity": 0.6,
+    "timestep_seconds": 900.0,
+    "n_steps": 1
+  },
+  "cattle": {
+    "cow_id": "default_charolais",
+    "breed": "charolais",
+    "initial_body_weight_kg": 450.0,
+    "gain_when_comfortable_kg_per_day": 0.1,
+    "loss_when_stressed_kg_per_day": 0.08,
+    "cow_count": 1
+  },
+  "training_breed_profiles": [
+    {
+      "cow_id": "charolais_train_001",
+      "breed": "charolais",
+      "initial_body_weight_kg": 450.0,
+      "gain_when_comfortable_kg_per_day": 0.1,
+      "loss_when_stressed_kg_per_day": 0.08,
+      "cow_count": 8
+    },
+    {
+      "cow_id": "boran_train_001",
+      "breed": "boran",
+      "initial_body_weight_kg": 380.0,
+      "gain_when_comfortable_kg_per_day": 0.09,
+      "loss_when_stressed_kg_per_day": 0.07,
+      "cow_count": 6
+    },
+    {
+      "cow_id": "brahman_shorthorn_train_001",
+      "breed": "brahman_shorthorn",
+      "initial_body_weight_kg": 420.0,
+      "gain_when_comfortable_kg_per_day": 0.095,
+      "loss_when_stressed_kg_per_day": 0.075,
+      "cow_count": 5
+    }
+  ],
+  "training": {
+    "dataset_path": "dataset/Alvand_36_19_50_06_1356998400_1735689599_68cd492551fde7000939a233.csv",
+    "steps_per_episode": 87672,
+    "horizon_steps": 4,
+    "episodes": 1,
+    "seed": 12345,
+    "model_output_path": "models/cattle_farming_env_rl_mpc_model.json",
+    "start_datetime": "2013-01-01 00:00:00",
+    "end_datetime": "2022-12-31 23:00:00"
+  },
+  "validation": {
+    "automatic_weight_update": true,
+    "manual_weight_file": "",
+    "csv_output_path": "output/validation_rollout.csv",
+    "svg_output_path": "output/validation_rollout.svg",
+    "start_datetime": "2023-01-01 00:00:00",
+    "end_datetime": "2023-03-31 23:00:00"
+  },
+  "reward_weights": {
+    "weight_gain_reward": 200.0,
+    "comfort_penalty": 150.0,
+    "energy_penalty": 20.0,
+    "humidity_penalty": 10.0,
+    "wind_penalty": 8.0,
+    "actuator_change_penalty": 0.1
+  },
+  "grpc_weight_feed": {
+    "enabled": false,
+    "endpoint": "localhost:50051",
+    "service": "cattle.weights.WeightFeedService",
+    "method": "GetLatestHerdSnapshot",
+    "snapshot_json_path": "config/grpc_weight_feed_snapshot.json",
+    "request_timeout_ms": 2000
+  },
+  "transformation": {
+    "ligaps_beef_weights": {
+      "enabled": false,
+      "endpoint": "unix:///tmp/ligaps-beef.sock",
+      "service": "cattle.farming.transformation.v1.LiGAPSBeefWeightService",
+      "method": "GetLatestWeightsByDate",
+      "request_timeout_ms": "2000",
+      "request_json_path": "config/ligaps_beef_request.json",
+      "response_json_path": "config/grpc_weight_feed_snapshot.json"
+    },
+    "ligaps_beef_optimizer": {
+      "enabled": false,
+      "endpoint": "unix:///tmp/ligaps-beef-optimizer.sock",
+      "service": "cattle.farming.transformation.v1.LiGAPSBeefOptimizerService",
+      "method": "GetIndoorClimateByDate",
+      "request_timeout_ms": "2000",
+      "request_json_path": "config/ligaps_beef_optimizer_request.json",
+      "response_json_path": "output/ligaps_beef_optimizer_climate_report.json"
+    },
+    "sensors_interface": {
+      "enabled": false,
+      "endpoint": "unix:///tmp/sensors-interface.sock",
+      "service": "cattle.farming.transformation.v1.SensorsInterfaceService",
+      "method": "GetLatestSensorFrame",
+      "request_timeout_ms": "2000",
+      "request_json_path": "config/sensors_interface_request.json",
+      "response_json_path": "config/sensors_interface_snapshot.json"
+    },
+    "actuators_interface": {
+      "enabled": false,
+      "endpoint": "unix:///tmp/actuators-interface.sock",
+      "service": "cattle.farming.transformation.v1.ActuatorsInterfaceService",
+      "method": "PushActuatorDispatch",
+      "request_timeout_ms": "2000",
+      "request_json_path": "config/actuators_interface_request.json",
+      "response_json_path": "output/actuators_dispatch.json"
+    },
+    "estimator_interface": {
+      "enabled": false,
+      "endpoint": "unix:///tmp/estimator-interface.sock",
+      "service": "cattle.farming.transformation.v1.EstimatorInterfaceService",
+      "method": "PushEnergyAggregateReport",
+      "request_timeout_ms": "2000",
+      "request_json_path": "config/estimator_interface_request.json",
+      "response_json_path": "output/estimator_energy_report.json"
+    }
+  },
+  "breed_presets": [
+    {
+      "name": "charolais",
+      "lct_ref_c": 5.0,
+      "uct_ref_c": 20.0,
+      "optimal_relative_humidity_min": 0.45,
+      "optimal_relative_humidity_max": 0.75,
+      "optimal_wind_min_m_s": 0.1,
+      "optimal_wind_max_m_s": 2.2,
+      "heat_production_factor": 1.0,
+      "coat_reflectivity": 0.6,
+      "coat_depth_m": 0.012,
+      "area_factor": 1.0,
+      "cbsmax": 64.1,
+      "lasmax_a": 3.08,
+      "lasmax_b": 1.73,
+      "rbcsf": 1.0,
+      "reference_skin_temp_c": 35.3,
+      "metabolic_multiplier": 1.0
+    },
+    {
+      "name": "boran",
+      "lct_ref_c": 7.0,
+      "uct_ref_c": 24.0,
+      "optimal_relative_humidity_min": 0.4,
+      "optimal_relative_humidity_max": 0.72,
+      "optimal_wind_min_m_s": 0.1,
+      "optimal_wind_max_m_s": 2.5,
+      "heat_production_factor": 1.1,
+      "coat_reflectivity": 0.6,
+      "coat_depth_m": 0.012,
+      "area_factor": 1.12,
+      "cbsmax": 64.1,
+      "lasmax_a": 4.89,
+      "lasmax_b": 0.8,
+      "rbcsf": 1.3,
+      "reference_skin_temp_c": 34.5,
+      "metabolic_multiplier": 0.91
+    },
+    {
+      "name": "brahman_shorthorn",
+      "lct_ref_c": 6.0,
+      "uct_ref_c": 26.0,
+      "optimal_relative_humidity_min": 0.4,
+      "optimal_relative_humidity_max": 0.72,
+      "optimal_wind_min_m_s": 0.1,
+      "optimal_wind_max_m_s": 2.7,
+      "heat_production_factor": 1.08,
+      "coat_reflectivity": 0.56,
+      "coat_depth_m": 0.012,
+      "area_factor": 1.09,
+      "cbsmax": 64.1,
+      "lasmax_a": 4.44,
+      "lasmax_b": 1.03,
+      "rbcsf": 1.0,
+      "reference_skin_temp_c": 34.7,
+      "metabolic_multiplier": 0.93
+    }
+  ],
+  "event_store": {
+    "sqlite_path": "output/cattle_farming_env_rl_mpc.sqlite"
+  },
+  "runtime_service": {
+    "model_path": "models/cattle_farming_env_rl_mpc_model.json",
+    "polling_interval_seconds": 1,
+    "max_cycles": 0,
+    "stop_file_path": "/tmp/cattle_farming_env_rl_mpc.stop"
+  }
+}

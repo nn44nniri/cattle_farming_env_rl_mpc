@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2050" viewBox="0 0 1600 2050">
+<rect width="100%" height="100%" fill="white"/>
+<text x="800" y="25" text-anchor="middle" font-size="22" font-family="Arial">cattle_farming_env_rl_mpc validation report</text>
+<text x="90" y="66" font-size="14" font-family="Arial">Temperature [C]</text>
+<rect x="90" y="75" width="1330" height="180" fill="none" stroke="black"/>
+<text x="82" y="88" text-anchor="end" font-size="11">23.57</text>
+<text x="82.00" y="255.00" text-anchor="end" font-size="11">-2.97</text>
+<polyline fill="none" stroke="#0055cc" stroke-width="1.5" points="90,249.506 356,249.778 622,251.812 888,255 1154,251.473 1420,237.366"/>
+<polyline fill="none" stroke="#d62728" stroke-width="1.5" points="90,146.368 356,155.77 622,163.006 888,169.053 1154,172.343 1420,170.661"/>
+<polyline fill="none" stroke="#2ca02c" stroke-width="1.5" points="90,192.225 356,192.226 622,192.226 888,192.226 1154,192.226 1420,192.227"/>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="1.5" points="90,75 356,78.636 622,86.9454 888,94.5861 1154,99.3645 1420,98.1482"/>
+<text x="90.00" y="272.00" font-size="11">0 min</text>
+<text x="1420.00" y="272.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="90.00" x2="1450.00" y2="90.00" stroke="#0055cc" stroke-width="2"/>
+<text x="1455.00" y="94.00" font-size="11">outdoor</text>
+<line x1="1430.00" y1="106.00" x2="1450.00" y2="106.00" stroke="#d62728" stroke-width="2"/>
+<text x="1455.00" y="110.00" font-size="11">indoor</text>
+<line x1="1430.00" y1="122.00" x2="1450.00" y2="122.00" stroke="#2ca02c" stroke-width="2"/>
+<text x="1455.00" y="126.00" font-size="11">&lt;TNZ lower</text>
+<line x1="1430.00" y1="138.00" x2="1450.00" y2="138.00" stroke="#ff7f0e" stroke-width="2"/>
+<text x="1455.00" y="142.00" font-size="11">&gt;TNZ upper</text>
+<text x="90.00" y="276.00" font-size="14" font-family="Arial">Indoor RH [-]</text>
+<rect x="90.00" y="285.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="298.00" text-anchor="end" font-size="11">1.00</text>
+<text x="82.00" y="465.00" text-anchor="end" font-size="11">0.00</text>
+<polyline fill="none" stroke="#d62728" stroke-width="1.5" points="90,341.522 356,328.775 622,317.749 888,307.61 1154,301.269 1420,302.884"/>
+<text x="90.00" y="482.00" font-size="11">0 min</text>
+<text x="1420.00" y="482.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="300.00" x2="1450.00" y2="300.00" stroke="#d62728" stroke-width="2"/>
+<text x="1455.00" y="304.00" font-size="11">series</text>
+<text x="90.00" y="486.00" font-size="14" font-family="Arial">Wind speed [m/s]</text>
+<rect x="90.00" y="495.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="508.00" text-anchor="end" font-size="11">2.00</text>
+<text x="82.00" y="675.00" text-anchor="end" font-size="11">1.03</text>
+<polyline fill="none" stroke="#1f77b4" stroke-width="1.5" points="90,495 356,675 622,675 888,675 1154,675 1420,675"/>
+<text x="90.00" y="692.00" font-size="11">0 min</text>
+<text x="1420.00" y="692.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="510.00" x2="1450.00" y2="510.00" stroke="#1f77b4" stroke-width="2"/>
+<text x="1455.00" y="514.00" font-size="11">series</text>
+<text x="90.00" y="696.00" font-size="14" font-family="Arial">Solar radiation [W/m2]</text>
+<rect x="90.00" y="705.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="718.00" text-anchor="end" font-size="11">1.00</text>
+<text x="82.00" y="885.00" text-anchor="end" font-size="11">-1.00</text>
+<polyline fill="none" stroke="#ff7f0e" stroke-width="1.5" points="90,795 356,795 622,795 888,795 1154,795 1420,795"/>
+<text x="90.00" y="902.00" font-size="11">0 min</text>
+<text x="1420.00" y="902.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="720.00" x2="1450.00" y2="720.00" stroke="#ff7f0e" stroke-width="2"/>
+<text x="1455.00" y="724.00" font-size="11">series</text>
+<text x="90.00" y="906.00" font-size="14" font-family="Arial">Internal heat [W]</text>
+<rect x="90.00" y="915.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="928.00" text-anchor="end" font-size="11">4001.00</text>
+<text x="82.00" y="1095.00" text-anchor="end" font-size="11">3999.00</text>
+<polyline fill="none" stroke="#9467bd" stroke-width="1.5" points="90,1005 356,1005 622,1005 888,1005 1154,1005 1420,1005"/>
+<text x="90.00" y="1112.00" font-size="11">0 min</text>
+<text x="1420.00" y="1112.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="930.00" x2="1450.00" y2="930.00" stroke="#9467bd" stroke-width="2"/>
+<text x="1455.00" y="934.00" font-size="11">series</text>
+<text x="90.00" y="1116.00" font-size="14" font-family="Arial">Damper actuator [%]</text>
+<rect x="90.00" y="1125.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="1138.00" text-anchor="end" font-size="11">100.00</text>
+<text x="82.00" y="1305.00" text-anchor="end" font-size="11">0.00</text>
+<polyline fill="none" stroke="#8c564b" stroke-width="1.5" points="90,1305 356,1305 622,1305 888,1305 1154,1305 1420,1305"/>
+<text x="90.00" y="1322.00" font-size="11">0 min</text>
+<text x="1420.00" y="1322.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="1140.00" x2="1450.00" y2="1140.00" stroke="#8c564b" stroke-width="2"/>
+<text x="1455.00" y="1144.00" font-size="11">damper setpoint</text>
+<text x="90.00" y="1326.00" font-size="14" font-family="Arial">Fan actuator [%]</text>
+<rect x="90.00" y="1335.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="1348.00" text-anchor="end" font-size="11">100.00</text>
+<text x="82.00" y="1515.00" text-anchor="end" font-size="11">0.00</text>
+<polyline fill="none" stroke="#17becf" stroke-width="1.5" points="90,1515 356,1515 622,1515 888,1515 1154,1515 1420,1515"/>
+<text x="90.00" y="1532.00" font-size="11">0 min</text>
+<text x="1420.00" y="1532.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="1350.00" x2="1450.00" y2="1350.00" stroke="#17becf" stroke-width="2"/>
+<text x="1455.00" y="1354.00" font-size="11">fan setpoint</text>
+<text x="90.00" y="1536.00" font-size="14" font-family="Arial">Heater actuator [%]</text>
+<rect x="90.00" y="1545.00" width="1330.00" height="180.00" fill="none" stroke="black"/>
+<text x="82.00" y="1558.00" text-anchor="end" font-size="11">100.00</text>
+<text x="82.00" y="1725.00" text-anchor="end" font-size="11">0.00</text>
+<polyline fill="none" stroke="#7f7f7f" stroke-width="1.5" points="90,1725 356,1725 622,1725 888,1725 1154,1725 1420,1725"/>
+<text x="90.00" y="1742.00" font-size="11">0 min</text>
+<text x="1420.00" y="1742.00" text-anchor="end" font-size="11">75.00 min</text>
+<line x1="1430.00" y1="1560.00" x2="1450.00" y2="1560.00" stroke="#7f7f7f" stroke-width="2"/>
+<text x="1455.00" y="1564.00" font-size="11">heater setpoint</text>
+</svg>

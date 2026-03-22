@@ -1,0 +1,16 @@
+{
+  "default_breed": "charolais",
+  "trained_breeds": ["boran", "brahman_shorthorn", "charolais"],
+  "horizon_steps": 4,
+  "initial_body_weight_kg": 450,
+  "gain_when_comfortable_kg_per_day": 0.1,
+  "loss_when_stressed_kg_per_day": 0.08,
+  "weights": {
+    "weight_gain_reward": 199.6,
+    "comfort_penalty": 157.5,
+    "energy_penalty": 19.9,
+    "humidity_penalty": 10,
+    "wind_penalty": 8,
+    "actuator_change_penalty": 0.1
+  }
+}
