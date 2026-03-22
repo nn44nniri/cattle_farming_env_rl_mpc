@@ -1,6 +1,6 @@
 # cattle_farming_env_rl_mpc
 
-`cattle_farming_env_rl_mpc` is a C++ package built on top of the existing `cattle_climate_simulator_env` library. It adapts the industrial cattle-barn climate simulator into a lightweight MPC-guided reinforcement-learning workflow for cattle thermal-comfort control.
+`cattle_farming_env_rl_mpc` is a C++ package built on top of the existing [`cattle_climate_simulator_env`](https://github.com/nn44nniri/cattle_climate_simulator_env) library. It adapts the industrial cattle-barn climate simulator into a lightweight MPC-guided reinforcement-learning workflow for cattle thermal-comfort control.
 
 The package is inspired by two references already attached in the workspace:
 
